@@ -1,0 +1,61 @@
+* {
+  font-family: "Hind Siliguri";
+}
+
+h3 {
+  text-align: center;
+}
+
+div {
+  font-size: x-large;
+}
+
+.container-in-container {
+  display: grid;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 130px);
+  grid-template-rows: repeat(3, 130px);
+  margin: 0 auto;
+}
+
+button {
+  width: 130px;
+  height: 40px;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: none;
+  background-color: #41a85f;
+  color: white;
+  cursor: pointer;
+}
+
+.grid-item {
+  background-color: rgb(255, 242, 182);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+p {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  animation: myfirst 3s 1 linear forwards;
+}
+
+@keyframes myfirst {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: calc(100% / 2.23);
+  }
+}
+
+svg {
+  margin: 10px;
+}

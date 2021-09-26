@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="google" content="notranslate" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/jpg"
+      href="https://image.flaticon.com/icons/png/512/434/434849.png"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div class="container-in-container">
+      <h3>Score: 0:0</h3>
+      <p id="paragraph" data-game-over="false"></p>
+      <div class="grid-container">
+        <div class="grid-item" data-symbol=""></div>
+        <div class="grid-item" data-symbol=""></div>
+        <div class="grid-item" data-symbol=""></div>
+        <div class="grid-item" data-symbol=""></div>
+        <div class="grid-item" data-symbol=""></div>
+        <div class="grid-item" data-symbol=""></div>
+        <div class="grid-item" data-symbol=""></div>
+        <div class="grid-item" data-symbol=""></div>
+        <div class="grid-item" data-symbol=""></div>
+      </div>
+      <button>NEW GAME</button>
+    </div>
+
+    <script src="oldLogic.js"></script>
+  </body>
+</html>
