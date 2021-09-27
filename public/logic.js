@@ -10,7 +10,7 @@ let mySymbol = "cross";
 let myTurn = true;
 let lastSymbol = "";
 
-const socket = io.connect("http://localhost:3000");
+const socket = io.connect();
 socket.on("changeTurn", (turn) => (myTurn = turn));
 socket.on("yourSymbol", (symbol) => {
   mySymbol = symbol;
