@@ -2,9 +2,10 @@
   "name": "tic-tac-toe-online",
   "version": "1.0.0",
   "description": "",
-  "main": "logic.js",
+  "main": "node.js",
   "scripts": {
-    "test": "nodemon node.js"
+    "test": "nodemon index.js",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
