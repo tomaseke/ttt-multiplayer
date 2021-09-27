@@ -24,6 +24,7 @@ socket.on("squareClicked", ([num, hisSymbol]) => {
   arrOfElements[num].dataset.symbol === "cross"
     ? (arrOfElements[num].innerHTML = cross)
     : (arrOfElements[num].innerHTML = circle);
+  counter++;
   isGameOver(valuesOfDivs());
   computeScore();
 });

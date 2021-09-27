@@ -41,10 +41,7 @@ button {
 }
 
 p {
-  display: flex;
-  align-items: center;
-  font-size: 1em;
-  animation: myfirst 3s 1 linear forwards;
+  text-align: center;
 }
 
 @keyframes myfirst {
