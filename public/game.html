@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="google" content="notranslate" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/jpg"
+      href="https://image.flaticon.com/icons/png/512/434/434849.png"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div id="game">
+      <div class="container-in-container">
+        <h3 class="centered-text">Score: 0:0</h3>
+        <h4 id="turn-display" class="centered-text">It's your turn.</h4>
+        <p id="paragraph" class="centered-text" data-game-over="false"></p>
+        <div class="grid-container">
+          <div class="grid-item" data-symbol=""></div>
+          <div class="grid-item" data-symbol=""></div>
+          <div class="grid-item" data-symbol=""></div>
+          <div class="grid-item" data-symbol=""></div>
+          <div class="grid-item" data-symbol=""></div>
+          <div class="grid-item" data-symbol=""></div>
+          <div class="grid-item" data-symbol=""></div>
+          <div class="grid-item" data-symbol=""></div>
+          <div class="grid-item" data-symbol=""></div>
+        </div>
+        <button>NEW GAME</button>
+      </div>
+    </div>
+    <div id="homepage">
+      <h1 class="centered-text">Mulitplayer Tic Tac Toe</h1>
+      <p class="centered-text">Select a room and start playing!</p>
+      <h3 id="error-full">This room is full. Select different one.</h3>
+      <div id="buttons-container">
+        <button class="room-button" id="room1">room 1</button>
+        <button class="room-button" id="room2">room 2</button>
+        <button class="room-button" id="room3">room 3</button>
+        <button class="room-button" id="room4">room 4</button>
+        <button class="room-button" id="room5">room 5</button>
+        <button class="room-button" id="room6">room 6</button>
+        <button class="room-button" id="room7">room 7</button>
+        <button class="room-button" id="room8">room 8</button>
+        <button class="room-button" id="room9">room 9</button>
+        <button class="room-button" id="room10">room 10</button>
+      </div>
+    </div>
+    <script src="logic.js"></script>
+    <script src="enterGame.js"></script>
+  </body>
+</html>

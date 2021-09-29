@@ -1,9 +1,40 @@
 * {
   font-family: "Hind Siliguri";
+  margin: 0;
+  padding: 0;
 }
 
-h3 {
+#game {
+  display: none;
+}
+
+.centered-text {
   text-align: center;
+  margin: 0 10px;
+}
+
+#buttons-container {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.room-button {
+  flex: 1 0 40%;
+  width: 30%;
+  margin: 10px;
+}
+
+#error-full {
+  width: fit-content;
+  padding: 10px;
+  margin: 0 auto;
+  background-color: red;
+  color: white;
+  text-align: center;
+  display: none;
 }
 
 div {
@@ -18,7 +49,7 @@ div {
   display: grid;
   grid-template-columns: repeat(3, 130px);
   grid-template-rows: repeat(3, 130px);
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
 button {
@@ -38,21 +69,30 @@ button {
   justify-content: center;
   align-items: center;
   border: 1px solid black;
-}
-
-p {
-  text-align: center;
-}
-
-@keyframes myfirst {
-  0% {
-    margin-left: 0;
-  }
-  100% {
-    margin-left: calc(100% / 2.23);
-  }
+  padding: 10px;
 }
 
 svg {
-  margin: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+/*mobile design*/
+@media only screen and (max-width: 850px) {
+  #buttons-container {
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .room-button {
+    width: 100%;
+    flex: initial;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 20vw);
+    grid-template-rows: repeat(3, 20vw);
+  }
 }

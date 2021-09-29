@@ -11,13 +11,42 @@ let myTurn = true;
 let lastSymbol = "";
 
 const socket = io.connect();
-socket.on("changeTurn", (turn) => (myTurn = turn));
+socket.on("waiting", () => {
+  document.getElementById("turn-display").innerHTML =
+    "Waiting for your opponent to connect.";
+  myTurn = false;
+});
+socket.on("changeTurn", (turn) => {
+  myTurn = turn;
+  turnDisplay();
+});
 socket.on("yourSymbol", (symbol) => {
   mySymbol = symbol;
   if (mySymbol == "circle") {
     myTurn = false;
   }
+  turnDisplay();
 });
+socket.on("opponentDisconnected", () => {
+  sessionStorage.setItem("score", "0:0");
+  myTurn = false;
+  myWins = 0;
+  hisWins = 0;
+  displayScore();
+  document.getElementById("turn-display").innerHTML =
+    "Your opponent has disconnected.";
+});
+
+function turnDisplay() {
+  myTurn
+    ? (document.getElementById("turn-display").innerHTML = "It's your turn.")
+    : (document.getElementById("turn-display").innerHTML =
+        "It's your opponent's turn.");
+
+  if (whoWon.dataset.gameOver === "true") {
+    document.getElementById("turn-display").innerHTML = "Game over.";
+  }
+}
 
 socket.on("squareClicked", ([num, hisSymbol]) => {
   arrOfElements[num].dataset.symbol = hisSymbol;
@@ -27,6 +56,8 @@ socket.on("squareClicked", ([num, hisSymbol]) => {
   counter++;
   isGameOver(valuesOfDivs());
   computeScore();
+  sessionStorage.setItem("score", `${myWins}:${hisWins}`);
+  displayScore();
 });
 
 // refactored win condition
@@ -97,9 +128,11 @@ function computeScore() {
   if (mySymbol === "circle" && whoWon.innerHTML === "O HAS WON") {
     myWins++;
   }
-  document.getElementsByTagName(
-    "h3"
-  )[0].innerHTML = `Score: ${myWins}:${hisWins}`;
+}
+
+function displayScore() {
+  let score = sessionStorage.getItem("score");
+  document.getElementsByTagName("h3")[0].innerHTML = `Score: ${score}`;
 }
 
 // gets value of all the divs into 2D array, something like this [[x,o,x], [o,x,o], [x,o,x]]
@@ -116,7 +149,7 @@ function valuesOfDivs() {
 
 function finalFunc(i) {
   return function () {
-    if (myTurn) {
+    if (myTurn && whoWon.dataset.gameOver === "false") {
       if (arrOfElements[i].innerHTML == "") {
         arrOfElements[i].dataset.symbol = mySymbol;
         arrOfElements[i].dataset.symbol === "cross"
@@ -126,9 +159,12 @@ function finalFunc(i) {
       counter++;
       isGameOver(valuesOfDivs());
       computeScore();
+      sessionStorage.setItem("score", `${myWins}:${hisWins}`);
+      displayScore();
       socket.emit("squareClicked", [i, mySymbol]);
       socket.emit("changeTurn", myTurn);
       myTurn = !myTurn;
+      turnDisplay();
     }
   };
 }
@@ -159,8 +195,8 @@ function removeAll() {
   whoWon.dataset.gameOver = "false";
   whoWon.innerHTML = "";
   counter = 0;
-  howManyTurnsIMade = 0;
   mySymbol === "circle" ? (mySymbol = "cross") : (mySymbol = "circle");
+  turnDisplay();
 }
 
 // new game button
