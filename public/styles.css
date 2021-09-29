@@ -87,6 +87,7 @@ svg {
   .room-button {
     width: 100%;
     flex: initial;
+    margin: 10px 0;
   }
 }
 
