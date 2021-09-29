@@ -1,9 +1,7 @@
 const allRooms = document.getElementsByClassName("room-button");
 
 for (let i = 0; i < allRooms.length; i++) {
-  allRooms[i].addEventListener("click", (e) => {
-    // e.preventDefault();
-    console.log(e);
+  allRooms[i].addEventListener("click", () => {
     let id = allRooms[i].id;
     socket.emit("roomJoined", id);
     socket.on("roomCapacity", (isRoomFull) => {

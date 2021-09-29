@@ -32,7 +32,6 @@ socket.on("opponentDisconnected", () => {
   myTurn = false;
   myWins = 0;
   hisWins = 0;
-  displayScore();
   document.getElementById("turn-display").innerHTML =
     "Your opponent has disconnected.";
 });
@@ -174,19 +173,6 @@ for (let i = 0; i < arrOfElements.length; i++) {
   arrOfElements[i].addEventListener("click", finalFunc(i));
 }
 
-// for (let i = 0; i < arrOfElements.length; i++) {
-//   arrOfElements[i].addEventListener("click", () => {
-//     if (
-//       whoWon.dataset.gameOver == "false" &&
-//       arrOfElements[i].innerHTML == "" &&
-//       myTurn
-//     ) {
-//       myTurn = !myTurn;
-//       socket.emit("changeTurn", myTurn);
-//     }
-//   });
-// }
-
 function removeAll() {
   for (let i = 0; i < arrOfElements.length; i++) {
     arrOfElements[i].innerHTML = "";
@@ -197,6 +183,7 @@ function removeAll() {
   counter = 0;
   mySymbol === "circle" ? (mySymbol = "cross") : (mySymbol = "circle");
   turnDisplay();
+  displayScore();
 }
 
 // new game button
